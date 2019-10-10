@@ -48,4 +48,4 @@ if g==('yes'):
 elif g==('no'):
     decrypt_caesar(x,k)
 else:
-    print('incorret input')
+    print('incorret input')"# cs102" 
