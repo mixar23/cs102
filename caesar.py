@@ -40,12 +40,3 @@ def decrypt_caesar(ciphertext:str,n:int) ->str:
                         plaintext+=(" ")
     print('Result: ',plaintext)
     return(plaintext)
-x=input('Enter text: ')
-k=int(input('Enter shift: '))
-g=input('Encrypt text?(yes/no): ')
-if g==('yes'):
-    encrypt_caesar(x,k)
-elif g==('no'):
-    decrypt_caesar(x,k)
-else:
-    print('incorret input')
