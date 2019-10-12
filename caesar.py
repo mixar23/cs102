@@ -1,4 +1,14 @@
 def encrypt_caesar(plaintext:str,n:int) -> str:
+    """
+    >>> encrypt_caesar("PYTHON")
+    'SBWKRQ'
+    >>> encrypt_caesar("python")
+    'sbwkrq'
+    >>> encrypt_caesar("Python3.6")
+    'Sbwkrq3.6'
+    >>> encrypt_caesar("")
+    ''
+    """
     a = ('abcdefghijklmnopqrstuvwxyz')
     b =('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     ciphertext = str()
@@ -20,6 +30,16 @@ def encrypt_caesar(plaintext:str,n:int) -> str:
     print('Result: ',ciphertext)
     return(ciphertext)
 def decrypt_caesar(ciphertext:str,n:int) ->str:
+    """
+    >>> decrypt_caesar("SBWKRQ")
+    'PYTHON'
+    >>> decrypt_caesar("sbwkrq")
+    'python'
+    >>> decrypt_caesar("Sbwkrq3.6")
+    'Python3.6'
+    >>> decrypt_caesar("")
+    ''
+    """
     plaintext=str()
     a = ('abcdefghijklmnopqrstuvwxyz')
     b =('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
