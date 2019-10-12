@@ -1,4 +1,12 @@
 def encrypt_vigenere(plaintext:str,keyword:str) -> str:
+      """
+    >>> encrypt_vigenere("PYTHON", "A")
+    'PYTHON'
+    >>> encrypt_vigenere("python", "a")
+    'python'
+    >>> encrypt_vigenere("ATTACKATDAWN", "LEMON")
+    'LXFOPVEFRNHR'
+    """
      a = ('abcdefghijklmnopqrstuvwxyz')
      b =('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
      ciphertext=str()
@@ -18,6 +26,14 @@ def encrypt_vigenere(plaintext:str,keyword:str) -> str:
              ciphertext+=(' ')
      return(ciphertext)
 def decrypt_vigenere(ciphertext:str,keyword:str) -> str:
+      """
+    >>> decrypt_vigenere("PYTHON", "A")
+    'PYTHON'
+    >>> decrypt_vigenere("python", "a")
+    'python'
+    >>> decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
+    'ATTACKATDAWN'
+    """
      a = ('abcdefghijklmnopqrstuvwxyz')
      b =('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
      plaintex=str()
