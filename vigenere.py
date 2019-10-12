@@ -36,12 +36,3 @@ def decrypt_vigenere(ciphertext:str,keyword:str) -> str:
          if k == 26:
              plaintex+=(' ')
      return(plaintex)     
-x = input('Enter text: ')
-y = input('Enter keyword: ')
-g = input('Do you want do encrypt this text?(yes/no):')
-if g == ('yes'):
-    print(encrypt_vigenere (x,y))
-elif g ==('no'):
-    print(decrypt_vigenere(x,y))
-else:
-    print('incorret input')
