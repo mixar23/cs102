@@ -27,7 +27,6 @@ def encrypt_caesar(plaintext:str,n:int) -> str:
                         ciphertext+=str(b[(b.index(i)+n)%26])
                     else:
                         ciphertext+=(" ")
-    print('Result: ',ciphertext)
     return(ciphertext)
 def decrypt_caesar(ciphertext:str,n:int) ->str:
     """
@@ -58,5 +57,4 @@ def decrypt_caesar(ciphertext:str,n:int) ->str:
                         plaintext+=str(b[(b.index(i)-n)%26])
                     else:
                         plaintext+=(" ")
-    print('Result: ',plaintext)
     return(plaintext)
