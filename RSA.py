@@ -28,6 +28,3 @@ def gcd(x:int,y:int) ->int:
             if (x % i == 0)and(y % i == 0):
                 return('they arr not valuable') 
         return(1)
-x = int(input('Enter the first number:'))
-y = int(input('Enter the second number:'))
-print(generate_keypair(x,y))
