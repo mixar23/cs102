@@ -9,25 +9,15 @@ def encrypt_caesar(plaintext: str) -> str:
     >>> encrypt_caesar("")
     ''
     """
-    a = ('abcdefghijklmnopqrstuvwxyz')
-    b = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     ciphertext = str()
-    s = -1
     for i in plaintext:
-        s += 1
-        for l in range(len(a)):
-            if plaintext[s] == a[l]:
-                if i != (' '):
-                    ciphertext += str(a[(a.index(i) + 3) % 26])
-                else:
-                    ciphertext += (plaintext[s])
-            else:
-                if plaintext[s] == b[l]:
-                    if i != (' '):
-                        ciphertext += str(b[(b.index(i) + 3) % 26])
-                    else:
-                        ciphertext += (plaintext[s])
-    return (ciphertext)
+        id = ord(i)
+        if ('a' <= i < 'x') or ('A' <= i < 'X'):
+            id += 3
+        elif ('x' <= i <= 'z') or ('X' <= i <= 'Z'):
+            id -= 23
+        ciphertext += chr(id)
+    return ciphertext
 
 
 def decrypt_caesar(ciphertext: str) -> str:
@@ -42,21 +32,11 @@ def decrypt_caesar(ciphertext: str) -> str:
     ''
     """
     plaintext = str()
-    a = ('abcdefghijklmnopqrstuvwxyz')
-    b = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    s = -1
     for i in ciphertext:
-        s += 1
-        for l in range(len(a)):
-            if ciphertext[s] == a[l]:
-                if i != (' '):
-                    ciphertext += str(a[(a.index(i) - 3) % 26])
-                else:
-                    plaintext += (ciphertext[s])
-            else:
-                if ciphertext[s] == b[l]:
-                    if i != (' '):
-                        plaintext += str(b[(b.index(i) - 3) % 26])
-                    else:
-                        plaintext += (ciphertext[s])
-    return (plaintext)
+        id = ord(i)
+        if ('d' <= i < 'z') or ('D' <= i < 'Z'):
+            id -= 3
+        elif ('a' <= i <= 'c') or ('A' <= i <= 'C'):
+            id += 23
+        plaintext += chr(id)
+    return plaintext
