@@ -1,4 +1,5 @@
 import random
+import math
 
 
 def is_prime(n: int) -> bool:
@@ -14,7 +15,8 @@ def is_prime(n: int) -> bool:
         return True
     if n % 2 == 0:
         return False
-    for i in range(3, n // 2 + 1, 2):
+    x = math.floor(n ** (1 / 2))
+    for i in range(3, x, 2):
         if n % i == 0:
             return False
     return True
