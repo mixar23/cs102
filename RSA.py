@@ -10,8 +10,11 @@ def is_prime(n: int) -> bool:
    >>> is_prime(8)
    False
    """
-
-    for i in range(2, n // 2 + 1):
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, n // 2 + 1, 2):
         if n % i == 0:
             return False
     return True
@@ -52,7 +55,9 @@ def gcd(x: int, y: int) -> int:
    1
    """
 
-    for i in range(2, x):
-        if (x % i == 0) and (y % i == 0):
-            return (i)
-    return (1)
+    while x != y:
+        if x > y:
+            x = x - y
+        else:
+            y = y - x
+    return (x)
