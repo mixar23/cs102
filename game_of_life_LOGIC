@@ -1,4 +1,5 @@
 import random
+import pathlib
 
 from copy import deepcopy
 
@@ -149,7 +150,7 @@ class GameOfLife:
             return False
 
     @staticmethod
-    def from_file(filename) -> 'GameOfLife':
+    def from_file(filename: pathlib.Path) -> 'GameOfLife':
         """
         Прочитать состояние клеток из указанного файла.
         """
@@ -160,7 +161,7 @@ class GameOfLife:
         game.curr_generation = grid
         return game
 
-    def save(self, filename):
+    def save(self, filename: pathlib.Path):
         """
         Сохранить текущее состояние клеток в указанный файл.
         """
