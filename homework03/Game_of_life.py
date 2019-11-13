@@ -18,7 +18,7 @@ class GameOfLife:
         # Текущее число поколений
         self.number_generation = 1
         #текущее состояние поля
-        self.grid = []
+        self.grid = self.create_grid
 
     def create_grid(self, randomize: bool=False):
         # Copy from previous assignment
@@ -39,18 +39,18 @@ class GameOfLife:
         out : Grid
             Матрица клеток размером `cell_height` х `cell_width`.
         """
-        self.grid = list()
+        grid = list()
         for i in range(self.rows):
-            self.grid.append(0)
+            grid.append(0)
         for i in range(self.rows):
-            self.grid[i] = list()
+            grid[i] = list()
             for l in range(self.cols):
                 if randomize:
                     f = random.randint(0, 1)
-                    self.grid[i].append(f)
+                    grid[i].append(f)
                 else:
-                    self.grid[i].append(0)
-        return self.grid
+                    grid[i].append(0)
+        return grid
 
     def get_neighbours(self, cell):
         # Copy from previous assignment
@@ -103,7 +103,6 @@ class GameOfLife:
             Новое поколение клеток.
         """
         New_grid = self.grid
-        Last_grid = self.grid
         for i in range(len(self.grid)):
             for l in range(len(self.grid[i])):
                 sosedi = GameOfLife.get_neighbours(self, [i, l])
@@ -115,8 +114,6 @@ class GameOfLife:
                     New_grid[i][l] = 1
                 else:
                     New_grid[i][l] = 0
-        if Last_grid == New_grid:
-            return False
         self.grid = New_grid
         return self.grid
 
@@ -172,6 +169,5 @@ class GameOfLife:
             for row in self.curr_generation:
                 file.write(''.join([str(x) for x in row]))
                 file.write('\n')
-
 
         
