@@ -105,14 +105,18 @@ class GameOfLife:
         for i in range(len(self.grid)):
             for l in range(len(self.grid[i])):
                 sosedi = GameOfLife.get_neighbours(self, [i, l])
-                s = 0
-                for k in sosedi:
-                    if k == 1:
-                        s += 1
-                if (s == 2) or (s == 3):
-                    New_grid[i][l] = 1
+                s=sosedi.count(1)
+                if New_grid[i][l] == 1:
+                        
+                        if (s == 2) or (s == 3):
+                            New_grid[i][l] = 1
+                        else:
+                            New_grid[i][l] = 0
                 else:
-                    New_grid[i][l] = 0
+                    if s == 3:
+                        New_grid[i][l] = 1
+                    else:
+                        New_grid[i][l] = 0
         self.grid = New_grid
         return self.grid
 
