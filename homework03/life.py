@@ -24,7 +24,7 @@ class GameOfLife:
         self.speed = speed
 
         # Создание списка клеток
-        self.grid = self.create_grid(randomize = True)
+        self.grid  = self.create_grid(randomize=True)
 
     def draw_lines(self):
         # @see: http://www.pygame.org/docs/ref/draw.html#pygame.draw.line
@@ -56,16 +56,13 @@ class GameOfLife:
     def get_neighbours(self, cell):
         """
         Вернуть список соседних клеток для клетки `cell`.
-
         Соседними считаются клетки по горизонтали, вертикали и диагоналям,
         то есть, во всех направлениях.
-
         Parameters
         ----------
         cell : Cell
             Клетка, для которой необходимо получить список соседей. Клетка
             представлена кортежем, содержащим ее координаты на игровом поле.
-
         Returns
         ----------
         out : Cells
@@ -95,30 +92,23 @@ class GameOfLife:
     def get_next_generation(self):
         """
         Получить следующее поколение клеток.
-
         Returns
         ----------
         out : Grid
             Новое поколение клеток.
         """
-        New_grid = self.grid
-        for i in range(len(self.grid)):
-            for l in range(len(self.grid[i])):
-                sosedi = GameOfLife.get_neighbours(self, [i, l])
-                s=sosedi.count(1)
-                if New_grid[i][l] == 1:
-                        
-                        if (s == 2) or (s == 3):
-                            New_grid[i][l] = 1
-                        else:
-                            New_grid[i][l] = 0
+        new_grid = self.create_grid()
+        for y in range(self.cell_height):
+            for x in range(self.cell_width):
+                neighbours_count = self.get_neighbours((y, x)).count(1)
+                if self.grid[y][x] == 0:
+                    if neighbours_count == 3:
+                        new_grid[y][x] = 1
                 else:
-                    if s == 3:
-                        New_grid[i][l] = 1
-                    else:
-                        New_grid[i][l] = 0
-        self.grid = New_grid
-        return self.grid
+                    if neighbours_count in [2, 3]:
+                        new_grid[y][x] = 1
+        return new_grid
+
 
     def run(self):
         grid = GameOfLife.create_grid(self, randomize=True)
@@ -132,25 +122,22 @@ class GameOfLife:
                 if event.type == QUIT:
                     running = False
             self.draw_grid()
-            grid = self.get_next_generation()
+            self.grid = self.get_next_generation()
             self.draw_lines()
             pygame.display.flip()
             clock.tick(self.speed)
         pygame.quit()
 
-    def create_grid(self, randomize):
+    def create_grid(self, randomize: bool = False):
         """
         Создание списка клеток.
-
         Клетка считается живой, если ее значение равно 1, в противном случае клетка
         считается мертвой, то есть, ее значение равно 0.
-
         Parameters
         ----------
         randomize : bool
             Если значение истина, то создается матрица, где каждая клетка может
             быть равновероятно живой или мертвой, иначе все клетки создаются мертвыми.
-
         Returns
         ----------
         out : Grid
@@ -171,6 +158,7 @@ class GameOfLife:
 
 
 if __name__ == '__main__':
-    game = GameOfLife(320, 240, 10)
-    game.run()
+    game = GameOfLife()
+    game.grid = game.create_grid(True)
 
+    game.run()
