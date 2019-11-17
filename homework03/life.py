@@ -1,5 +1,6 @@
 import pygame
 import random
+
 from pprint import pprint as pp
 from pygame.locals import *
 
@@ -116,16 +117,44 @@ class GameOfLife:
         pygame.display.set_caption('Game of Life')
         self.screen.fill(pygame.Color('white'))
         running = True
+        k = 1
         while running:
             for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    cell = event.pos
+                    position = GameOfLife.get_number_cell(self, cell)
+                    x, y = position
+                    self.grid = prev_grid
+                    if self.grid[y][x] == 0:
+                        self.grid[y][x] = 1
+
+                    else:
+                        self.grid[y][x] = 0
+                    self.draw_grid()
+                    self.draw_lines()
+                    pygame.display.flip()
+                    print(cell)
+                if event.type == pygame.KEYDOWN:
+                    if event.key == K_SPACE:
+                        k += 1
+            if k % 2 == 0:
+                continue
+            prev_grid = self.grid
             self.draw_grid()
             self.grid = self.get_next_generation()
             self.draw_lines()
             pygame.display.flip()
             clock.tick(self.speed)
         pygame.quit()
+
+    def get_number_cell(self, cell: list):
+        x, y = cell
+        x //= self.cell_size
+        y //= self.cell_size
+        cell = (x, y)
+        return cell
 
     def create_grid(self, randomize: bool = False):
         """
