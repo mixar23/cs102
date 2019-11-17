@@ -2,8 +2,7 @@ import pathlib
 import random
 
 from copy import deepcopy
-from typing import  Optional, Tuple
-
+from typing import Optional, Tuple
 
 
 class GameOfLife:

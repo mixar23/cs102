@@ -24,7 +24,7 @@ class GameOfLife:
         self.speed = speed
 
         # Создание списка клеток
-        self.grid  = self.create_grid(randomize=True)
+        self.grid = self.create_grid(randomize=True)
 
     def draw_lines(self):
         # @see: http://www.pygame.org/docs/ref/draw.html#pygame.draw.line
@@ -108,7 +108,6 @@ class GameOfLife:
                     if neighbours_count in [2, 3]:
                         new_grid[y][x] = 1
         return new_grid
-
 
     def run(self):
         grid = GameOfLife.create_grid(self, randomize=True)
