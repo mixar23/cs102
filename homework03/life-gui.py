@@ -1,6 +1,6 @@
 import pygame
 
-from Game_of_life import GameOfLife
+from life import GameOfLife
 from pygame.locals import *
 from ui import UI
 
