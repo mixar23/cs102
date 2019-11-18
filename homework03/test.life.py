@@ -2,7 +2,7 @@ import unittest
 import random
 import json
 
-from Game_of_life import GameOfLife
+from life import GameOfLife
 
 
 class TestGameOfLife(unittest.TestCase):
