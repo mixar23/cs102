@@ -1,7 +1,7 @@
 import curses
 import time
 
-from Game_of_life import GameOfLife
+from life import GameOfLife
 from ui import UI
 
 
