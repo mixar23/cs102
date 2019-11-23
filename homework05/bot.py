@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from typing import List, Tuple
 
 
-access_token = '1000685654:AAE-ZmA2pFLXRQlBx2LjptRcDIe5UNZjEjI'
+access_token = 'acces_token'
 telebot.apihelper.proxy = {'https': 'https://149.56.106.104:3128'}
 bot = telebot.TeleBot(access_token)
 
@@ -17,7 +17,7 @@ def get_page(group: str, week: str='') -> str:
     url = f"{config.domain}/{group}/{week}raspisanie_zanyatiy_{group}.htm"
     response = requests.get(url)
     web_page = response.text
-    return web_page\
+    return web_page
 
 
 
@@ -158,6 +158,7 @@ def is_group_exceeded(group):
 
 @bot.message_handler(commands=['near'])
 def near(message: str):
+    translate = {'monday':'понедельник','tuesday':'вторник','wednesday':'среду','thursday':'четверг','friday':'пятницу','saturday':'субботу','sunday':'воскресение'}
     start = ''
     end = ''
     message_text = message.text
@@ -209,7 +210,7 @@ def near(message: str):
                     WEEK,weekday = give_week.today_day_is(k)
                     schedule = get_schedule(get_page(group,WEEK),weekday)
                     if  schedule != 'Занятий НЕТ)))':
-                        now = 'Следующая пара: '
+                        now = 'Следующая пара - в '+translate[weekday]+': '
                         text = now
                         for i in range(len(schedule)):
                             text += schedule[i][0]
