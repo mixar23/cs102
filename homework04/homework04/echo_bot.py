@@ -1,6 +1,6 @@
 import telebot
 
-access_token = '1000685654:AAE-ZmA2pFLXRQlBx2LjptRcDIe5UNZjEjI'
+access_token = access_token
 telebot.apihelper.proxy = {'https': 'https://149.56.106.104:3128'}
 
 # Создание бота с указанным токеном доступа
