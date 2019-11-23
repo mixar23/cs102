@@ -25,7 +25,7 @@ from typing import List, Tuple
                   </td>
 '''
 
-access_token = '1000685654:AAE-ZmA2pFLXRQlBx2LjptRcDIe5UNZjEjI'
+access_token = access_token
 telebot.apihelper.proxy = {'https': 'https://149.56.106.104:3128'}
 bot = telebot.TeleBot(access_token)
 
