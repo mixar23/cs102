@@ -175,10 +175,6 @@ def get_wall(
     # PUT YOUR CODE HERE
     return response
 
-print(get_friends(171494699,'bdate,sex'))
-print(age_predict(171494699))
-print(get_wall('171494699'))
-
 
 
 
