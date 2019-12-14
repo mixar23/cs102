@@ -172,7 +172,6 @@ def get_wall(
     :param fields: Список дополнительных полей для профилей и сообществ, которые необходимо вернуть.
     :param v: Версия API.
     """
-    # PUT YOUR CODE HERE
     return response
 
 
