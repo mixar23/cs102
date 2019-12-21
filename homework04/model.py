@@ -19,7 +19,7 @@ response = requests.post(
     url="https://api.vk.com/method/execute",
         data={
             "code": code,
-            "access_token": vk['access_token'],
+            "access_token": '0b2b845d0b2b845d0b2b845d8a0b45c94600b2b0b2b845d56c9e24595c571c95014542d',
             "v": "5.103"
         }
 )
